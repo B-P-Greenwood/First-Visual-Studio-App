@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+#playing-card{
+    max-height: 70vh;
+}
+#welcome{
+    padding:0.5em;
+}
+#playing-card-icon{
+    max-height: 2em;
+}
