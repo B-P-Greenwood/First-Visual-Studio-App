@@ -56,7 +56,7 @@ input {
 }
 
 @media (min-width: 576px){
-    .nav-link:hover {
+    .nav-options:hover {
         -webkit-transform: scale(1.2);
     }
     #privacy-joke {
