@@ -68,7 +68,7 @@ namespace Jokes.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer,JokeAuthor")] Joke joke)
         {
             if (ModelState.IsValid)
             {
@@ -87,13 +87,17 @@ namespace Jokes.Controllers
             {
                 return NotFound();
             }
-
             var joke = await _context.Joke.FindAsync(id);
             if (joke == null)
             {
                 return NotFound();
             }
-            return View(joke);
+            if (joke.JokeAuthor != @User.Identity?.Name)
+            {
+                return View("Unauthorised");
+            }
+
+                return View(joke);
         }
 
         // POST: Jokes/Edit/5
@@ -102,7 +106,7 @@ namespace Jokes.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer,JokeAuthor")] Joke joke)
         {
             if (id != joke.Id)
             {
@@ -147,7 +151,10 @@ namespace Jokes.Controllers
             {
                 return NotFound();
             }
-
+            if (joke.JokeAuthor != @User.Identity?.Name)
+            {
+                return View("Unauthorised");
+            }
             return View(joke);
         }
 

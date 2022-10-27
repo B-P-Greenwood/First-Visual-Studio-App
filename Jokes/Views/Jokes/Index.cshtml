@@ -14,6 +14,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.JokeQuestion)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JokeAuthor)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,10 +29,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.JokeQuestion)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JokeAuthor)
+                    </td>
                     <td id="joke-option-section">
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        @if (item.JokeAuthor == @User.Identity?.Name) {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><span> | </span>
+                            }
+                        <a asp-action="Details" asp-route-id="@item.Id">Answer</a>
+                        @if (item.JokeAuthor == @User.Identity?.Name)
+                        {
+                            <span> | </span><a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }
                     </td>
                 </tr>
             }
