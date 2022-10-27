@@ -51,6 +51,15 @@ input {
     color: red;
     font-weight:bold;
 }
+#none-found-statement{
+    margin-bottom: 1em;
+}
+#SearchOption{
+    margin-top:1em;
+    margin-bottom: 1em;
+    appearance:auto;
+}
+
 @media (max-width: 330px) {
     h1 b::before {
         content: "\A";
