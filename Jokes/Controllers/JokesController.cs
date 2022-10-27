@@ -87,13 +87,17 @@ namespace Jokes.Controllers
             {
                 return NotFound();
             }
-
             var joke = await _context.Joke.FindAsync(id);
             if (joke == null)
             {
                 return NotFound();
             }
-            return View(joke);
+            if (joke.JokeAuthor != @User.Identity?.Name)
+            {
+                return View("Unauthorised");
+            }
+
+                return View(joke);
         }
 
         // POST: Jokes/Edit/5
@@ -147,7 +151,10 @@ namespace Jokes.Controllers
             {
                 return NotFound();
             }
-
+            if (joke.JokeAuthor != @User.Identity?.Name)
+            {
+                return View("Unauthorised");
+            }
             return View(joke);
         }
 

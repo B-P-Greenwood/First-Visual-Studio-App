@@ -31,6 +31,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (Model.JokeAuthor == @User.Identity?.Name) {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit | </a>
+     }
     <a asp-action="Index">Back to List</a>
 </div>

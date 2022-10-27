@@ -33,15 +33,23 @@ input {
 #joke-option-section{
     text-align:end;
 }
-#privary-frame{
-    display:flex;
+#privary-frame, #access-denied-frame {
+    display: flex;
     justify-content: center;
 }
-#privacy-joke {
+#privacy-joke, #access-denied-image {
     width: 80vw;
 }
 #privacy-title {
     margin-bottom: 2em;
+}
+
+#access-denied-title {
+    margin-bottom: 1em;
+}
+#not-auth{
+    color: red;
+    font-weight:bold;
 }
 @media (max-width: 330px) {
     h1 b::before {
@@ -59,7 +67,7 @@ input {
     .nav-options:hover {
         -webkit-transform: scale(1.2);
     }
-    #privacy-joke {
+    #privacy-joke, #access-denied-image {
         width: 55vw;
     }
 }
