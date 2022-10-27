@@ -4,10 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Full Joke</h1>
 
 <div>
-    <h4>Joke</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -15,12 +14,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.JokeQuestion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JokeAuthor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JokeAuthor)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.JokeAnswer)
@@ -32,7 +25,7 @@
 </div>
 <div>
     @if (Model.JokeAuthor == @User.Identity?.Name) {
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit | </a>
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a><span> | </span>
      }
     <a asp-action="Index">Back to List</a>
 </div>
