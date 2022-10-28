@@ -1,17 +1,17 @@
-name: Build and deploy .NET Core application to Web App Jokes20221028114534
+name: Build and deploy .NET Core application to Web App Jokes20221028135541
 on:
   push:
     branches:
     - main
 env:
-  AZURE_WEBAPP_NAME: Jokes20221028114534
-  AZURE_WEBAPP_PACKAGE_PATH: Jokes\published
+  AZURE_WEBAPP_NAME: Jokes20221028135541
+  AZURE_WEBAPP_PACKAGE_PATH: Jokes/published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: Jokes
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -30,7 +30,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.Jokes20221028114534_FFFF }}
+        publish-profile: ${{ secrets.Jokes20221028135541_FFFF }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
